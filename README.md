@@ -61,6 +61,10 @@ A responsive real-time messaging application built with React, Vite, Supabase Au
 
 Run `npm run build` to generate the static site in `dist/`. Deploy `dist/` to any static host (for example, Vercel, Netlify, or Cloudflare Pages), set the two `VITE_SUPABASE_*` environment variables in the host, deploy both Edge Functions, and configure the Supabase Site URL and redirect allow list to your production domain. The host should serve `index.html` for the root route.
 
+### GitHub Pages
+
+The included GitHub Actions workflow builds and deploys the site when you push to `main` or `master`. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` as repository Actions secrets under **Settings → Secrets and variables → Actions**. Then set **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The build automatically uses the correct asset path for a project page (for example, `owner.github.io/repository/`) or a user/organization page (`owner.github.io/`). After deployment, add the GitHub Pages URL to the Supabase Auth site's URL and redirect allow list.
+
 The project SQL installs the database tables, indexes, profile/signup triggers, private username lookup table for the Edge Function, RPCs, notifications, storage buckets, realtime publication entries, and row-level security policies. Review and test schema changes in a non-production Supabase project before deploying them to production.
 
 ## Notes and current boundaries
